@@ -1,4 +1,4 @@
-import { createUserWithEmailAndPassword, signInWithPopup, GoogleAuthProvider, signOut } from "firebase/auth";
+import { createUserWithEmailAndPassword, signInWithPopup, signOut } from "firebase/auth";
 import { auth, githubProvider, googleProvider, twitterProvider } from "../firebase.config";
 
 interface Props {
