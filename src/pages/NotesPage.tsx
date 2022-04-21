@@ -1,7 +1,7 @@
 import { ListNotes, NavBar } from "../components/notes"
 
-
 export const NotesPage = () => {
+
   return (
     <div>
       <NavBar />

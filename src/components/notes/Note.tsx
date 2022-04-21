@@ -1,7 +1,15 @@
+import { NoteProp } from '../../models/Note';
 
-
-export const Note = () => {
+export const Note = ({
+  title,
+  description
+}: NoteProp ) => {
   return (
-    <div>Note</div>
+    <div>
+      <h4> { title } </h4>
+      <p>
+        { description }
+      </p>
+    </div>
   )
 }
