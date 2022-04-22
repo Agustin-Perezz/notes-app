@@ -2,15 +2,12 @@ import * as Yup from 'yup';
 import { useFormik } from 'formik';
 import { createUserEmailPassword, googleLogin, githubLogin, twitteLogin } from '../../actions/auth';
 import { useNavigate } from 'react-router-dom';
-import { auth } from '../../firebase.config';
 
 export const AuthComponent = () => {
 
   const navigate = useNavigate();
 
-  console.log( auth.currentUser)
-
-  const { handleSubmit, touched,  errors, getFieldProps } 
+  const { handleSubmit, touched, errors, getFieldProps } 
     = useFormik({
     initialValues: {
       firstName: '',

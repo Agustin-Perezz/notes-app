@@ -1,15 +1,10 @@
-import { useQuery } from "react-query"
-import { getNotes } from '../../actions/notes';
 import { Note } from "./Note";
 import { NoteProp } from '../../models/Note';
+import { useNotes } from '../../hooks/useNotes';
 
 export const ListNotes = () => {
 
-  const { 
-    data: notes, 
-    isLoading, 
-    isError,
-   } = useQuery(["notes"], getNotes );
+  const { data: notes, isLoading, isError, } = useNotes();
 
   if ( isError ) return <h1> error get </h1>
 
