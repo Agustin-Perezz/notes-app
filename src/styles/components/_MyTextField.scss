@@ -1,0 +1,120 @@
+$first-color: #334e9b;
+$input-color: #80868B;
+// $border-color: #DADCE0;
+$border-color: #999999;
+$normal-font-size: 0.80rem;
+$small-font-size: .75rem;
+
+
+body{
+    margin: 0;
+    padding: 0;
+    font-size: $normal-font-size;
+    font-family: 'Nunito', sans-serif;
+}
+h1{
+    margin: 0;  
+}
+
+.l-form{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+    img {
+        height: 65px;
+    }
+}
+
+.form{
+    width: 240px;
+    padding: 5px;
+    border-radius: 1rem;
+
+    &__title{
+        font-weight: 400;
+        margin-bottom: 3rem;
+    }
+    &__div{
+        position: relative;
+        height: 40px;
+        margin-top: 0.5rem;
+    }
+    &__input{
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        font-size: $normal-font-size;
+        border: 1px solid $border-color;
+        border-radius: .5rem;
+        outline: none;
+        padding: 1rem;
+        background-color: none !important;
+        z-index: 1;
+
+        &-danger{ 
+            border: 1px solid rgb(175, 64, 64);
+        }
+
+    }
+    &__label{
+        position: absolute;
+        left: 1rem;
+        top: 0.9rem;
+        padding: 0 .25rem;
+        background-color: #fff;
+        color: $input-color;
+        font-size: $normal-font-size;
+        transition: .3s;
+    }
+    &__button{
+        display: block;
+        margin: 10px auto;
+        padding: .60rem 2rem;
+        outline: none;
+        border: none;
+        background-color: $first-color;
+        font-family: 'Poppins', sans-serif;
+        color: #fff;
+        font-size: $normal-font-size;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: .3s;
+
+        &-disabled {
+            cursor: not-allowed;
+        }
+
+        &:hover{
+            box-shadow: 0 10px 36px rgba(0, 0, 0, .15);
+        }
+    }
+    &__error {
+        color: rgb(175, 64, 64);
+    }
+}
+
+.form__input:focus + .form__label {
+    top: -.5rem;
+    left: .8rem;
+    color: $first-color;
+    font-size: $small-font-size;
+    font-weight: 500;
+    z-index: 10;
+}
+
+.form__input:not(:placeholder-shown).form__input:not(:focus) + .form__label {
+    top: -.5rem;
+    left: .8rem;
+    z-index: 10;
+    font-size: $small-font-size;
+    font-weight: 500;
+}
+
+.form__input:focus {
+    border: 1.5px solid $first-color;
+}
+

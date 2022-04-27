@@ -1,32 +1,17 @@
 import * as Yup from 'yup';
-import { useFormik } from 'formik';
+import { Form, Formik } from 'formik';
 import { createUserEmailPassword, googleLogin, githubLogin, twitteLogin } from '../../actions/auth';
 import { useNavigate } from 'react-router-dom';
+import { MyTextField } from './MyTextField';
+
+import googleLogo from '../../assets/icons/google-icon.png';
+import gitHubLogo from '../../assets/icons/github.png';
+import twitterLogo from '../../assets/icons/twitter.png';
+import hello from '../../assets/icons/hello.png';
 
 export const AuthComponent = () => {
 
   const navigate = useNavigate();
-
-  const { handleSubmit, touched, errors, getFieldProps } 
-    = useFormik({
-    initialValues: {
-      firstName: '',
-      password: '',
-      email: '', 
-    },
-    onSubmit: async( values ) => {
-      await createUserEmailPassword( values );
-      navigate('/notes/');
-    },
-    validationSchema: Yup.object({
-      password: Yup.string()
-                    .max( 15, 'Deve tener 15 caracteres o menos')
-                    .required('Requerido'),
-      email:     Yup.string()
-                    .email('Email is not valid')
-                    .required('Requerido'),
-    })
-  });
   
   const handleLoginGoogle = async() => {
     await googleLogin();
@@ -44,25 +29,60 @@ export const AuthComponent = () => {
   }
 
   return (
-    <div>
-      <div className="register">
-        <form onSubmit={ handleSubmit }>
-          <label htmlFor="email "> Email Addres </label>
-          <input type="text" { ...getFieldProps('email') }/>
-          { touched.email && errors.email && <span> { errors.email } </span> }
+    <div className="register">
+      <div className='register__container'>
+        <Formik
+          initialValues={{
+            email: '',
+            password: '',
+          }}
+          onSubmit={ async( values ) => {
+            await createUserEmailPassword( values );
+            navigate('/notes/')
+          }}
+          validationSchema= { Yup.object({
+            password: Yup.string()
+                          .min( 5, 'Min 6 characters')
+                          .required('Required'),
+            email:     Yup.string()
+                          .email('Email is not valid')
+                          .required('Required'),
+          })
+        }>
 
-          <label htmlFor="password"> password </label>
-          <input type="password" { ...getFieldProps('password') }/>
-          { touched.password && errors.password && <span> { errors.password } </span> }
 
-          <button type='submit'> Register </button>
-        </form>
-      </div>
-      <div className="social">
-        <button onClick={ handleLoginGoogle }> Google </button>
-        <button onClick={ handleLoginGitHub }> Git Hub </button>
-        <button onClick={ handleTwitter }> Twitter </button>
-      </div>
+        {( formik ) => (
+          <Form>
+            <div className="l-form">
+                <img src={ hello } />
+                <h3 className='register__title'> Please register below. </h3>
+                <MyTextField 
+                  label="Email Adress" 
+                  name="email"
+                />
+                <MyTextField 
+                  label="Password" 
+                  name="password"
+                  type='password'
+                />
+                <button 
+                  disabled={!(formik.dirty && formik.isValid)} 
+                  className={`form__button ${ !formik.isValid && 'form__button-disabled' }`}
+                > 
+                  Register 
+                </button>
+              </div>
+          </Form>
+        )}
+        </Formik>
+        
+          <h4> or login with social </h4>
+          <div className="register__social">
+            <img src={ googleLogo }  alt="Google Logo" onClick={ handleLoginGoogle }/>
+            <img src={ gitHubLogo }  alt="GitHub Logo" onClick={ handleLoginGitHub } />
+            <img src={ twitterLogo }  alt="GitHub Logo" onClick={ handleLoginGitHub } />
+          </div>
+        </div>
     </div>
   )
 }

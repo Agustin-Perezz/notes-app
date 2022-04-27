@@ -8,6 +8,7 @@ interface Props {
 
 export const createUserEmailPassword = async({ email, password }: Props ) => {
   try {
+    console.log('hi')
     await createUserWithEmailAndPassword( auth, email, password ); 
   } catch (error) {
     console.log( error );
