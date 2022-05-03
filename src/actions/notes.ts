@@ -1,14 +1,14 @@
 
-// const API_URL = process.env.API_KEY;
-
 import { auth } from "../firebase.config";
 import { NoteProp } from '../models/Note';
 
+const BASE_URL = 'http://localhost:3005/api/notes';
+const uid = auth.currentUser?.uid; 
+
 export const getNotes = async() => {
 
-  const uid = auth.currentUser?.uid; 
   try {
-    const resp = await fetch( 'http://localhost:3005/api/notes/', {
+    const resp = await fetch( BASE_URL, {
       method: 'POST',
       headers: {
         'Content-type': 'application/json'
@@ -28,9 +28,8 @@ export const getNotes = async() => {
 
 export const addNote = async( valuesData: NoteProp ) => {
 
-  const uid = auth.currentUser?.uid; 
   try {
-    const resp = await fetch( 'http://localhost:3005/api/notes/add', {
+    const resp = await fetch( `${BASE_URL}/add`, {
       method: 'POST',
       headers: {
         'Content-type': 'application/json'
@@ -41,12 +40,29 @@ export const addNote = async( valuesData: NoteProp ) => {
       })
     });
 
-    console.log( resp.statusText )
-
   } catch (error) {
     console.log( error ); 
   }
 
+}
+
+export const deleteNote = async( id: string ) => {
+
+  try {
+    const resp = await fetch( `${BASE_URL}/delet`, {
+      method: 'POST',
+      headers: {
+        'Content-type': 'application/json'
+      },
+      body: JSON.stringify({
+        id,
+        uid
+      })
+    });
+
+  } catch (error) {
+    console.log( error ); 
+  }
 }
 
 // para un futuro

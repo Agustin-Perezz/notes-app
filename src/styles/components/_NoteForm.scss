@@ -1,0 +1,81 @@
+
+.note__form {
+  background-color: white;
+  border-radius: 5px;
+  width: 270px;
+  margin: 0 auto;
+}
+
+.l-note {
+  height: 310px;
+}
+
+textarea {
+  max-height: 100px;
+  resize: none;
+  font-weight: 550;
+  font-family: 'Inter', sans-serif;
+}
+
+.xl {
+  height: 80px;
+}
+
+.title {
+  font-family: 'Quicksand', sans-serif;
+  margin: 13px 0 5px 0;
+  color: rgb(92, 91, 91);
+  font-size: 13px;
+}
+
+.button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 10px auto;
+  padding: 0.6rem 2rem;
+  outline: none;
+  border: none;
+  background-color: #238636;
+  font-family: "Poppins", sans-serif;
+  font-weight: 500  ;
+  color: rgb(221, 221, 221);
+  font-size: 0.9rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.3s;
+
+  img {
+    height: 15px;
+    padding-left: 3px;
+  }
+
+  &:hover { 
+    background-color: #1a6b2a;
+    color: white;
+  }
+
+  &-disabled {
+    cursor: not-allowed;
+  }
+}
+
+.introduction {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 10px;
+
+  img {
+    height: 23px;
+    margin-left: 5px;
+  }
+
+  &__tittle {
+    font-size: 20px;
+    font-family: 'Poppins' ,sans-serif;
+    letter-spacing: 0.5px;
+    color: rgb(83, 82, 82);
+  }
+
+}

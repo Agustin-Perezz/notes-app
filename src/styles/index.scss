@@ -2,9 +2,15 @@
 @import './base/base';
 
 // Pages
-@import './pages/AuthPage';
+@import 
+      './pages/AuthPage',
+      './pages/NotesPage';
 
 // Components
 @import 
       './components/AuthComponent',
-      './components/MyTextField';
+      './components/MyTextField',
+      './components/NavBar',
+      './components/ListNotes',
+      './components/Note',
+      './components/NoteForm';

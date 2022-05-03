@@ -1,0 +1,29 @@
+
+.notes {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
+  &__head {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+
+    img {
+      height: 28px;
+      padding-left: 6px;
+    }
+
+    h2 {
+      font-family: 'Quicksand', sans-serif;
+      letter-spacing: 1px;
+      font-size: 23px;
+      color: rgb(75, 75, 75);
+    }
+  }
+}
+
+.container__cards {
+  width: 320px;
+}
