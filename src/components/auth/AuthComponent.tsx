@@ -54,11 +54,12 @@ export const AuthComponent = () => {
         {( formik ) => (
           <Form>
             <div className="l-form">
-                <img src={ hello } />
+                <img className='hello' src={ hello } />
                 <h3 className='register__title'> Please register below. </h3>
                 <MyTextField 
                   label="Email Adress" 
                   name="email"
+                  type='email'
                 />
                 <MyTextField 
                   label="Password" 

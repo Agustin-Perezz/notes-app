@@ -1,69 +1,86 @@
 import * as Yup from 'yup';
-import { Formik, useFormik, Form, Field } from 'formik';
-import { useMutateNote } from '../../hooks/useNotes';
+import { Formik, Form } from 'formik';
+import { useMutateNote, useNote } from '../../hooks/useNotes';
 import { MyTextField } from '../auth/MyTextField';
+import { StateModal } from '../../models/Modal';
+import { useEffect, useState } from 'react';
 import { MyTextArea } from '../auth/MyTextArea';
+import { NoteProp } from '../../models/Note';
 
 import saveIcon from '../../assets/icons/save.png';
 import note from '../../assets/icons/sticky-note.png';
+import closeIcon from '../../assets/icons/close.png';
 
+interface FormProps extends StateModal {
+  id?: string;
+}
 
-export const NoteForm = () => {
+export const NoteForm = ({ id, setShowModal }: FormProps ) => {
 
-  const { isLoading, mutate, isSuccess } = useMutateNote( '1');
-
-  // aca hacemos fetchin del cache de la nota por el id y lo pasamos en init
-  // si no hay nada queda vacio
-  // cambiar el initValues por nuestro propio objeto
+  const [initialValues, setInitialValues] = useState<NoteProp>({
+    title: '',
+    description: ''
+  });
   
+  const { isLoading, mutate, isSuccess } = useMutateNote( id );
+
+  if ( id ) {
+    const { data: note = {} } = useNote( id );
+    useEffect(() => {
+      setInitialValues({
+        id,
+        title: note.title,
+        description: note.description
+      });
+    }, [ note ])
+  }
+
   return (
     <div className='note__form'>
         <Formik
-          initialValues={{
-            title: '',
-            description: '',
-          }}
+          initialValues={ initialValues }
+          enableReinitialize
           onSubmit={ async( values ) => {
-            mutate( values, {
-              onSuccess: () => {
-                // clean inputs despues del add note
-              }
-            });
+            mutate( values );
+            setShowModal({ watch: false });
           }}
           validationSchema= { Yup.object({
-            title:         Yup.string()
-                          .required('Required'),
-            description:   Yup.string()
-                          .required('Required'),
+            title: Yup.string().required('Required'),
+            description: Yup.string().required('Required'),
           })
         }>
-
         {( formik ) => (
           <Form>
             <div className="l-form l-note">
-                <div className="introduction">
-                  <h3 className='introduction__tittle'> New Note! </h3>
-                  <img src={ note } alt="" />
-                </div>
-                <h4 className='title'> Please complete the fields. </h4>
-                <MyTextField
-                  label="Title" 
-                  name="title"
-                />
-                <MyTextArea 
-                  label='Description'
-                  name='description'
-                />
-                  <button 
-                    disabled={!(formik.dirty && formik.isValid)} 
-                    className={`button ${ !(formik.isValid && formik.dirty) && 'button-disabled' }`}
-                    style={{ margin: '10px' }}
-                  >
-                    {/* condicional si es save | update  */}
-                    Save 
-                    <img src={ saveIcon } alt="save" />
-                  </button>
-                </div>
+              <img onClick={ () => setShowModal({ watch: false }) } className='close-icon' src={ closeIcon } alt="closeicon" />
+              <div className="introduction">
+                <h3 className='introduction__tittle'> New Note! </h3>
+                <img src={ note } alt="" />
+              </div>
+              <h4 className='title'> Please complete the fields. </h4>
+              <MyTextField
+                label="Title" 
+                type='text'
+                name="title"
+              />
+              <MyTextArea 
+                label='Description'
+                name='description'
+              />
+              <button 
+                type='submit'
+                disabled={!(formik.dirty && formik.isValid)} 
+                className={
+                  `button 
+                  ${!(formik.isValid && formik.dirty) && 'button-disabled'} 
+                  ${ isLoading && 'button-loading'}`
+                }
+                style={{ margin: '10px' }}
+              >
+                { id ? 'Update' : 'Save' }
+                <img src={ saveIcon } alt="save" />
+              </button>
+            </div>
           </Form>
         )}
         </Formik>

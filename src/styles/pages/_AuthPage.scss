@@ -1,7 +1,6 @@
 
 .container {
   height: 100vh;
-  min-height: 100%;
   margin: 0 auto;
   background-color: #D6E1FF;
   display: flex;
@@ -13,4 +12,6 @@
   position: absolute;
   bottom: 0;
   left: 0;
+  height: 200px;
+  // min-width: 100%;
 }

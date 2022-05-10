@@ -1,5 +1,6 @@
 
 .note__form {
+  position: relative;
   background-color: white;
   border-radius: 5px;
   width: 270px;
@@ -58,6 +59,10 @@ textarea {
   &-disabled {
     cursor: not-allowed;
   }
+  &-loading {
+    opacity: 0.3;
+    content: 'asdf';
+  }
 }
 
 .introduction {
@@ -78,4 +83,19 @@ textarea {
     color: rgb(83, 82, 82);
   }
 
+}
+
+.close-icon {
+  height: 25px;
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin: 5px;
+  cursor: pointer;
+  opacity: 0.7;
+
+  &:hover {
+    opacity: 1;
+  }
+  
 }

@@ -1,28 +1,27 @@
 import { ListNotes, NavBar } from "../components/notes"
 import { useState } from 'react';
 import { NoteForm } from '../components/notes/NoteForm';
+import { ModalProps } from '../models/Modal';
 
 import addNoteIcon from '../assets/icons/add-note.png';
 
 export const NotesPage = () => {
 
-  const [viewForm, setViewForm] = useState( false );
+  const [showModal, setShowModal] = useState<ModalProps>({ watch: false });
 
   return (
-    <div className={`container__notes ${ viewForm && 'container__notes-bg'}`}>
+    <div className="container__notes">
       <NavBar />
-      {/* mandar el setViewForm */}
-      <ListNotes />
-      <div 
-        className="container__notes-add"
-        onClick={ () => setViewForm( prevState => !prevState ) }
-      > 
+      <ListNotes setShowModal={ setShowModal }/>
+      <div className="container__notes-add" onClick={ () => setShowModal({ watch: true }) }> 
         <h6> Add Note </h6> 
         <img src={ addNoteIcon } alt="add" />
       </div>
       {
-        // mandar el setviewForm tmb en el noteform
-        viewForm && <NoteForm />
+        showModal.watch && 
+        <div className="modal-bg">
+          <NoteForm { ...showModal } setShowModal={ setShowModal } />
+        </div>
       }
       <footer> develop by banana agustin </footer>
     </div>

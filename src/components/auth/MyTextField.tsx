@@ -3,8 +3,7 @@ import { useField } from 'formik';
 interface Props {
     label: string;
     name: string;
-    placeholder?: string;
-    type?: 'text' | 'email' | 'password',
+    type: 'text' | 'email' | 'password',
     [x: string]: any,
 }
 

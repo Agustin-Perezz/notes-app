@@ -1,5 +1,6 @@
 
 .card {
+  position: relative;
   min-width: 260px;
   width: 100%;
   height: max-content;
@@ -8,6 +9,19 @@
   background-color: white;
   box-shadow: 3px 3px 6px 6px rgba(22, 12, 112, 0.1);
   border-top: 1px solid rgb(178, 177, 235);
+
+  img {
+    position: absolute;
+    right: 0;
+    margin-top: 5px;
+    margin: 10px;
+    height: 25px;
+    opacity: 0.7;
+    cursor: pointer;
+    &:hover { 
+      opacity: 1;
+    }
+  }
 }
 
 .note {
@@ -18,17 +32,6 @@
     justify-content: space-between;
     padding-bottom: 6px;
     margin-right: 20px;
-
-    img {
-      margin-top: 5px;
-      height: 25px;
-      opacity: 0.7;
-      cursor: pointer;
-      &:hover { 
-        opacity: 1;
-      }
-    }
-
   }
   
   h4 {

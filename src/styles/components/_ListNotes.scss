@@ -1,24 +1,33 @@
-
 .notes {
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  margin-top: 20px;
+  border: 1px solid #d2d9db;
+  border-radius: 5px;
+  padding: 25px 10px 5px 10px;
+
+  small {
+    color: #727272;
+    font-size: 13px;
+    font-family: 'Nunito', sans-serif;
+    padding: 10px 0;
+  }
 
   &__head {
     display: flex;
     align-items: center;
-    margin-bottom: 15px;
 
     img {
-      height: 28px;
+      height: 35px;
       padding-left: 6px;
     }
 
     h2 {
-      font-family: 'Quicksand', sans-serif;
+      font-family: 'Nunito', sans-serif;
       letter-spacing: 1px;
-      font-size: 23px;
+      font-size: 25px;
       color: rgb(75, 75, 75);
     }
   }

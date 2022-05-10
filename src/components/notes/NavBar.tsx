@@ -14,18 +14,22 @@ export const NavBar = () => {
   }
 
   const user = auth.currentUser;
+  console.log( user?.email )
 
   return (
     <div className='nav'>  
       <div className="nav__left">
         <img src={ user?.photoURL ? user.photoURL : 'asdf' } alt="" />
-        <h4> { user?.displayName ? user.displayName : user?.email } </h4>
+        <div className="">
+          <h4> { user?.displayName ? user.displayName : user?.email } </h4>
+          <h6> { user!.email } </h6>
+        </div>
       </div>
       <div className='nav__button' onClick={ handleLogout }>  
-        <span> SingOut </span> 
+        <span> Logout </span> 
         <img src={ logoutIcon } alt="logout" />
       </div>
-      <hr className='nav__line'/>
+      {/* <hr className='nav__line'/> */}
     </div>
   )
 }

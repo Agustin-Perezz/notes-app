@@ -1,10 +1,11 @@
 import { Note } from "./Note";
 import { NoteProp } from '../../models/Note';
+import { StateModal } from "../../models/Modal";
 import { useNotes } from '../../hooks/useNotes';
 
-import notesIcon from '../../assets/icons/publicalo.png';
+import notesIcon from '../../assets/icons/check-list.png';
 
-export const ListNotes = () => {
+export const ListNotes = ( { setShowModal }: StateModal ) => {
 
   const { data: notes = [], isLoading, isError, } = useNotes();
 
@@ -23,13 +24,14 @@ export const ListNotes = () => {
         ?
           <div className="container__cards">
             {
+              // generar uid aleatorio para el key
               notes.map(( note: NoteProp ) => (
-                <Note { ...note } key={ note.id } />
+                <Note { ...note } key={ note.id } setShowModal={ setShowModal } />
                 ))
             }
           </div>
         :
-        <h1> no tenes notes </h1>
+        <small> ( you don't have notes yet )  </small>
       }
     </div>
   )
