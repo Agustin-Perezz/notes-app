@@ -77,7 +77,7 @@ export const deleteNote = async( id: string ) => {
 
   const uid = auth.currentUser?.uid; 
   try {
-    const resp = await fetch( `${BASE_URL}/delet`, {
+    await fetch( `${BASE_URL}/delet`, {
       method: 'POST',
       headers: {
         'Content-type': 'application/json'

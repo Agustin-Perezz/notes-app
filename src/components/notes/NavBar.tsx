@@ -3,6 +3,7 @@ import { useQueryClient } from 'react-query';
 import { auth } from '../../firebase.config';
 
 import logoutIcon from '../../assets/icons/logout.png';
+import userIcon from '../../assets/icons/user.png';
 
 export const NavBar = () => {
 
@@ -14,12 +15,11 @@ export const NavBar = () => {
   }
 
   const user = auth.currentUser;
-  console.log( user?.email )
 
   return (
     <div className='nav'>  
       <div className="nav__left">
-        <img src={ user?.photoURL ? user.photoURL : 'asdf' } alt="" />
+        <img src={ userIcon } alt="" />
         <div className="">
           <h4> { user?.displayName ? user.displayName : user?.email } </h4>
           <h6> { user!.email } </h6>
@@ -29,7 +29,6 @@ export const NavBar = () => {
         <span> Logout </span> 
         <img src={ logoutIcon } alt="logout" />
       </div>
-      {/* <hr className='nav__line'/> */}
     </div>
   )
 }

@@ -19,8 +19,8 @@ export const AuthComponent = () => {
   }
 
   const handleLoginGitHub = async () => {
-    await githubLogin(); 
-    navigate('/notes/');
+    const resp = await githubLogin(); 
+    if ( resp ) { navigate('/notes/') };
   }
 
   const handleTwitter = async() => {
@@ -29,7 +29,7 @@ export const AuthComponent = () => {
   }
 
   return (
-    <div className="register">
+    <div className="register animate__animated animate__zoomIn ">
       <div className='register__container'>
         <Formik
           initialValues={{
@@ -49,26 +49,26 @@ export const AuthComponent = () => {
                           .required('Required'),
           })
         }>
-
-
         {( formik ) => (
           <Form>
-            <div className="l-form">
+            <div className="l-form ">
                 <img className='hello' src={ hello } />
                 <h3 className='register__title'> Please register below. </h3>
-                <MyTextField 
-                  label="Email Adress" 
-                  name="email"
-                  type='email'
-                />
-                <MyTextField 
-                  label="Password" 
-                  name="password"
-                  type='password'
-                />
+                <div className="box-auht-inputs">
+                  <MyTextField 
+                    label="Email Adress" 
+                    name="email"
+                    type='email'
+                  />
+                  <MyTextField 
+                    label="Password" 
+                    name="password"
+                    type='password'
+                  />
+                </div>
                 <button 
                   disabled={!(formik.dirty && formik.isValid)} 
-                  className={`form__button ${ !formik.isValid && 'form__button-disabled' }`}
+                  className={`form__button ${ !formik.isValid && 'form__button-disabled' } `}
                 > 
                   Register 
                 </button>

@@ -29,6 +29,10 @@ textarea {
   font-size: 13px;
 }
 
+.box-inputs {
+  width: 230px;
+}
+
 .button {
   display: flex;
   justify-content: center;
@@ -37,7 +41,6 @@ textarea {
   padding: 0.6rem 2rem;
   outline: none;
   border: none;
-  background-color: #238636;
   font-family: "Poppins", sans-serif;
   font-weight: 500  ;
   color: rgb(221, 221, 221);
@@ -46,15 +49,26 @@ textarea {
   cursor: pointer;
   transition: 0.3s;
 
+  &-bg-save{ 
+    background-color: #238636;
+    &:hover { 
+      background-color: #1a6b2a;
+      color: white;
+    }  
+  }
+  &-bg-update{
+    background-color: #4773CC;
+    &:hover { 
+      background-color: #294e97;
+      color: white;
+    }
+  }
+
   img {
     height: 15px;
     padding-left: 3px;
   }
 
-  &:hover { 
-    background-color: #1a6b2a;
-    color: white;
-  }
 
   &-disabled {
     cursor: not-allowed;
@@ -90,7 +104,7 @@ textarea {
   position: absolute;
   top: 0;
   right: 0;
-  margin: 5px;
+  margin: 7px;
   cursor: pointer;
   opacity: 0.7;
 

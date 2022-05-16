@@ -4,12 +4,14 @@ import { ReactQueryDevtools } from 'react-query/devtools'
 
 import { NotesApp } from './NotesApp';
 import './styles/index.scss';
+import 'animate.css';
 
 const queryClient = new QueryClient({
   defaultOptions: {
     queries: {
       refetchOnWindowFocus: false,
-      refetchInterval: 6000,
+      refetchInterval: 12000,
+      staleTime: 60000,
       retry: 1, 
     }
   }

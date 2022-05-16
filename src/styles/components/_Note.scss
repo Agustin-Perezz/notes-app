@@ -4,11 +4,18 @@
   min-width: 260px;
   width: 100%;
   height: max-content;
-  margin: 15px 0px;
-  border-radius: 8px;
+  margin: 16px 0px;
+  border-radius: 5px;
   background-color: white;
-  box-shadow: 3px 3px 6px 6px rgba(22, 12, 112, 0.1);
   border-top: 1px solid rgb(178, 177, 235);
+  box-shadow: 1px 3px 9px -3px rgba(87,87,87,0.99);
+  -webkit-box-shadow: 1px 3px 9px -3px rgba(87,87,87,0.99);
+  -moz-box-shadow: 1px 3px 9px -3px rgba(87,87,87,0.99);
+  transition: all 0.25s;
+  cursor: pointer;
+  &:hover { 
+    transform: translateY(-6px);
+  }
 
   img {
     position: absolute;
@@ -33,7 +40,7 @@
     padding-bottom: 6px;
     margin-right: 20px;
   }
-  
+
   h4 {
     font-family: 'Inter', sans-serif;
     font-size: 16px;

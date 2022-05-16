@@ -8,6 +8,7 @@ import { MyTextArea } from '../auth/MyTextArea';
 import { NoteProp } from '../../models/Note';
 
 import saveIcon from '../../assets/icons/save.png';
+import updateIcon from '../../assets/icons/upload.png';
 import note from '../../assets/icons/sticky-note.png';
 import closeIcon from '../../assets/icons/close.png';
 
@@ -19,24 +20,24 @@ export const NoteForm = ({ id, setShowModal }: FormProps ) => {
 
   const [initialValues, setInitialValues] = useState<NoteProp>({
     title: '',
-    description: ''
+    description: '',
   });
   
-  const { isLoading, mutate, isSuccess } = useMutateNote( id );
+  const { isLoading, mutate } = useMutateNote( id );
 
   if ( id ) {
-    const { data: note = {} } = useNote( id );
+    const { data: note = {}, isSuccess } = useNote( id );
     useEffect(() => {
       setInitialValues({
         id,
-        title: note.title,
-        description: note.description
+        title: note.title || '',
+        description: note.description || '',
       });
-    }, [ note ])
+    }, [ isSuccess ])
   }
 
   return (
-    <div className='note__form'>
+    <div className={`note__form animate__animated animate__zoomIn animate__faster`}>
         <Formik
           initialValues={ initialValues }
           enableReinitialize
@@ -54,31 +55,36 @@ export const NoteForm = ({ id, setShowModal }: FormProps ) => {
             <div className="l-form l-note">
               <img onClick={ () => setShowModal({ watch: false }) } className='close-icon' src={ closeIcon } alt="closeicon" />
               <div className="introduction">
-                <h3 className='introduction__tittle'> New Note! </h3>
+                <h3 className='introduction__tittle'> { id ? 'Update Note!' : 'New Note!'} </h3>
                 <img src={ note } alt="" />
               </div>
-              <h4 className='title'> Please complete the fields. </h4>
-              <MyTextField
-                label="Title" 
-                type='text'
-                name="title"
-              />
-              <MyTextArea 
-                label='Description'
-                name='description'
-              />
+              <h4 className='title'>
+                { id ? 'Please update the fields.' : 'Please complete the fields.'}
+              </h4>
+              <div className="box-inputs">
+                <MyTextField
+                  label="Title" 
+                  type='text'
+                  name="title"
+                />
+                <MyTextArea 
+                  label='Description'
+                  name='description'
+                />
+              </div>
               <button 
                 type='submit'
                 disabled={!(formik.dirty && formik.isValid)} 
                 className={
                   `button 
                   ${!(formik.isValid && formik.dirty) && 'button-disabled'} 
-                  ${ isLoading && 'button-loading'}`
+                  ${ isLoading && 'button-loading'}
+                  ${ id ? 'button-bg-update' : 'button-bg-save' }`
                 }
-                style={{ margin: '10px' }}
+                style={{margin: '10px'}}
               >
                 { id ? 'Update' : 'Save' }
-                <img src={ saveIcon } alt="save" />
+                <img src={ id ? updateIcon : saveIcon  } alt="save" />
               </button>
             </div>
           </Form>

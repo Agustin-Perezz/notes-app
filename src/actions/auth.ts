@@ -1,18 +1,19 @@
 import { createUserWithEmailAndPassword, signInWithPopup, signOut } from "firebase/auth";
 import { auth, githubProvider, googleProvider, twitterProvider } from "../firebase.config";
+import toast from 'react-hot-toast';
 
 interface Props {
   email: string;
   password: string;
 }
 
+
 export const createUserEmailPassword = async({ email, password }: Props ) => {
   try {
     console.log('hi')
     await createUserWithEmailAndPassword( auth, email, password ); 
-  } catch (error) {
-    console.log( error );
-  }
+  } catch ( error: any ) {
+    console.log( ` this is at error ${ error.message } ` ); } 
 }
 
 export const googleLogin = async() => {
@@ -25,9 +26,10 @@ export const googleLogin = async() => {
 
 export const githubLogin = async() => {
   try {
-    await signInWithPopup( auth, githubProvider );
-  } catch (error) {
-    console.log( error ); 
+    const resp = await signInWithPopup( auth, githubProvider );
+    return resp;
+  } catch (error: any) {
+    toast.error( error.message, { style: { marginTop: '160px'}} );
   }
 }
 
@@ -43,3 +45,4 @@ export const twitteLogin = async() => {
 export const logout = async() => {
   await signOut( auth );
 }
+
