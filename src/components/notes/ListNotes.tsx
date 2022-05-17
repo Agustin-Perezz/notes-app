@@ -7,9 +7,7 @@ import notesIcon from '../../assets/icons/check-list.png';
 
 export const ListNotes = ( { setShowModal }: StateModal ) => {
 
-  const { data: notes = [], isLoading, isError, } = useNotes();
-
-  if ( isError ) return <h1> error get </h1>
+  const { data: notes = [], isLoading } = useNotes();
 
   return (
     <div className="notes">
@@ -23,9 +21,8 @@ export const ListNotes = ( { setShowModal }: StateModal ) => {
         ?
           <div className="container__cards">
             {
-              // generar uid aleatorio jlkpara el key si o si
-              notes.map(( note: NoteProp ) => {
-                return <Note { ...note } key={ note.id } setShowModal={ setShowModal } />
+              notes.map(( note: NoteProp, index: any ) => {
+                return <Note { ...note } key={ index } setShowModal={ setShowModal } />
               })
             }
           </div>

@@ -2,7 +2,6 @@ import { ListNotes, NavBar } from "../components/notes"
 import { useState } from 'react';
 import { NoteForm } from '../components/notes/NoteForm';
 import { ModalProps } from '../models/Modal';
-import { Toaster } from 'react-hot-toast';
 
 import addIcon from '../assets/icons/plus-listo.png';
 
@@ -24,7 +23,6 @@ export const NotesPage = () => {
           <NoteForm { ...showModal } setShowModal={ setShowModal } />
         </div>
       }
-      <Toaster /> 
       {/* <footer> develop by banana agustin </footer> */}
     </div>
   )

@@ -1,5 +1,4 @@
 import toast from 'react-hot-toast';
-
 import { useMutation, useQueryClient, useQuery } from 'react-query';
 import { addNote, getNotes, updateNote, getNote, deleteNote } from '../actions/notes';
 import { NoteProp } from '../models/Note';
@@ -21,7 +20,7 @@ export const useMutateNote = ( id?: string ) => {
   if ( !id ) {
     return useMutation( addNote , {
       onSuccess: () => {
-        toast.success('Successfully created!', { style: { border: '0.5px solid #5AB75B'}})
+        toast.success('Successfully created!', { style: { border: '0.5px solid #5AB75B', marginTop: '5rem'}})
         queryClient.invalidateQueries( [KEY] )
       },
       onMutate: ( newNote ) => {
@@ -31,7 +30,7 @@ export const useMutateNote = ( id?: string ) => {
   } else {
     return useMutation( updateNote , {
       onSuccess: () => {
-        toast.success('Successfully updated!', { style: { border: '0.5px solid #4067DB'}})
+        toast.success('Successfully updated!', { style: { border: '0.5px solid #4067DB', marginTop: '5rem'}})
         queryClient.invalidateQueries( [KEY] )
       },
       onMutate: ( newNote ) => {
@@ -51,7 +50,7 @@ export const useDeleteNote = () => {
   const queryClient = useQueryClient();
   return useMutation( deleteNote , {
     onSuccess: () => {
-      toast.success('Successfully eliminated!', { style: { border: '0.5px solid #F37A7A'}});
+      toast.success('Successfully eliminated!', { style: { border: '0.5px solid #F37A7A', marginTop: '5rem'}});
       queryClient.invalidateQueries( [KEY ])
     },
     onMutate: ( noteId ) => {
@@ -60,6 +59,5 @@ export const useDeleteNote = () => {
       queryClient.setQueryData([KEY], leakedNotes);
     }
   })
-
 }
   

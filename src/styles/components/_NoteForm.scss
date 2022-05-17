@@ -69,13 +69,8 @@ textarea {
     padding-left: 3px;
   }
 
-
   &-disabled {
     cursor: not-allowed;
-  }
-  &-loading {
-    opacity: 0.3;
-    content: 'asdf';
   }
 }
 

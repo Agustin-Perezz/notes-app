@@ -1,10 +1,10 @@
 import ReactDOM from 'react-dom/client'
 import { QueryClient, QueryClientProvider } from 'react-query';
-import { ReactQueryDevtools } from 'react-query/devtools'
 
-import { NotesApp } from './NotesApp';
 import './styles/index.scss';
 import 'animate.css';
+
+import { NotesApp } from './NotesApp';
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -20,6 +20,5 @@ const queryClient = new QueryClient({
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <QueryClientProvider client={queryClient}>
     <NotesApp />
-    <ReactQueryDevtools />
   </QueryClientProvider>
 )

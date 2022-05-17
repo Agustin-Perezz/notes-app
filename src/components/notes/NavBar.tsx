@@ -3,7 +3,7 @@ import { useQueryClient } from 'react-query';
 import { auth } from '../../firebase.config';
 
 import logoutIcon from '../../assets/icons/logout.png';
-import userIcon from '../../assets/icons/user.png';
+import userIcon from '../../assets/icons/cat.png';
 
 export const NavBar = () => {
 

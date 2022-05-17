@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Nunito&family=Poppins:wght@200;400&family=Quicksand&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Inter&family=Raleway&display=swap');
+
 * {
   box-sizing: border-box;
   padding: 0;
@@ -11,5 +12,5 @@ input:-webkit-autofill,
 input:-webkit-autofill:hover, 
 input:-webkit-autofill:focus, 
 input:-webkit-autofill:active{
-    -webkit-box-shadow: 0 0 0 30px white inset !important;
+  -webkit-box-shadow: 0 0 0 30px white inset !important;
 }

@@ -34,21 +34,23 @@
   }
 }
 .container__cards {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   width: 320px;
+  margin-bottom: 20px;
 }
 
 .spinner {
   border: 4px solid rgb(213, 215, 233);
-  position: absolute;  
-  margin-top: 30px;
+  margin-bottom: 10px;
   width: 36px;
   height: 36px;
   border-radius: 50%;
   border-left-color: #3071bb;
-
   animation: spin 0.5s linear infinite;
 }
-
 @keyframes spin {
   0% {
     transform: rotate(0deg);
@@ -56,4 +58,12 @@
   100% {
     transform: rotate(380deg);
   }
+}
+
+@media screen and ( min-width: 780px )  {
+  .container__cards { 
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 100%;
+  } 
 }

@@ -1,9 +1,7 @@
-
 .container__notes {
   height: 100vh;
   padding: 20px 10px; 
   background-color: #FCFDFF;
-  margin-top: 5rem;  
   max-width: 750px;
   margin: 5rem auto 0 auto;
 
@@ -47,6 +45,16 @@
   justify-content: center;
   align-items: center;
   background-color: rgb(0,0,0,0.5);
+}
+
+@media screen and ( min-width: 780px )  {
+  .container__notes { 
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-top: 0;
+    min-height: 100vh;
+  } 
 }
 
 

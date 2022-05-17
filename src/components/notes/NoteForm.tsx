@@ -23,7 +23,7 @@ export const NoteForm = ({ id, setShowModal }: FormProps ) => {
     description: '',
   });
   
-  const { isLoading, mutate } = useMutateNote( id );
+  const { mutate } = useMutateNote( id );
 
   if ( id ) {
     const { data: note = {}, isSuccess } = useNote( id );
@@ -78,7 +78,6 @@ export const NoteForm = ({ id, setShowModal }: FormProps ) => {
                 className={
                   `button 
                   ${!(formik.isValid && formik.dirty) && 'button-disabled'} 
-                  ${ isLoading && 'button-loading'}
                   ${ id ? 'button-bg-update' : 'button-bg-save' }`
                 }
                 style={{margin: '10px'}}

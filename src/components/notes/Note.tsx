@@ -8,7 +8,7 @@ interface NoteProps extends NoteProp {
   setShowModal: React.Dispatch<React.SetStateAction<ModalProps>>;
 }
 
-export const Note = ( { title, description, id, setShowModal }: NoteProps ) => {
+export const Note = ({ title, description, id, setShowModal }: NoteProps ) => {
 
   const { mutate } = useDeleteNote();
 

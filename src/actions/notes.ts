@@ -126,10 +126,3 @@ export const updateNote = async( valuesData: NoteProp ) => {
   }
 
 }
-
-// para un futuro
-// const getUserToken = async() => {
-//   const userToken = await auth.currentUser?.getIdToken();
-//   console.log( userToken )
-//   return userToken;
-// }

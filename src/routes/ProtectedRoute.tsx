@@ -13,11 +13,10 @@ export const ProtectedRoute = ({ children }: any) => {
     setLoading( false );
   })
 
-  if ( loading ) return <h1> cheking... </h1>
+  if ( loading ) return <div className="modal-bg"> cheking... </div>
 
   if ( !user ) return <Navigate to='/auth' />
 
   return <> { children } </>
   
 }
-
