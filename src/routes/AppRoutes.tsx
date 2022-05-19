@@ -1,11 +1,11 @@
-import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom"
+import { BrowserRouter, HashRouter, Navigate, Route, Routes } from "react-router-dom"
 import { AuthPage, NotesPage } from '../pages/';
 import { ProtectedRoute } from "./ProtectedRoute";
 
 export const AppRoutes = () => {
   
   return (
-    <BrowserRouter>
+    <BrowserRouter basename="/notes-app">
       <Routes>
         <Route path="/auth/" element={ <AuthPage /> } />
         <Route 
