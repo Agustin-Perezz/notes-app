@@ -16,8 +16,8 @@ export const AuthComponent = () => {
   const navigate = useNavigate();
   
   const handleLoginGoogle = async() => {
-    await googleLogin();
-    navigate('/notes/');
+    const resp = await googleLogin();
+    if ( resp ) { navigate('/notes/') };
   }
 
   const handleLoginGitHub = async () => {
@@ -26,8 +26,8 @@ export const AuthComponent = () => {
   }
 
   const handleTwitter = async() => {
-    await twitteLogin();
-    navigate('/notes/');
+    const resp = await twitteLogin();
+    if ( resp ) { navigate('/notes/') };
   }
 
   return (
@@ -70,7 +70,7 @@ export const AuthComponent = () => {
                     <img src={ gitHubLogo }  alt="GitHub Logo"  />
                     <h6>Continue whit GitHub.</h6>
                   </div>
-                  <div className="register__social" onClick={ handleLoginGitHub }>
+                  <div className="register__social" onClick={ handleTwitter }>
                     <img src={ twitterLogo }  alt="GitHub Logo" />
                     <h6>Continue whit Twitter.</h6>
                   </div>

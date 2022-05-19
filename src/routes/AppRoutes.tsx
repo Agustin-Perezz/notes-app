@@ -1,4 +1,4 @@
-import { BrowserRouter, HashRouter, Navigate, Route, Routes } from "react-router-dom"
+import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom"
 import { AuthPage, NotesPage } from '../pages/';
 import { ProtectedRoute } from "./ProtectedRoute";
 

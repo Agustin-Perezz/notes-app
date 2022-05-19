@@ -2,7 +2,7 @@
 import { auth } from "../firebase.config";
 import { NoteProp } from '../models/Note';
 
-const BASE_URL = 'http://localhost:3005/api/notes';
+const BASE_URL = 'https://intense-spire-90736.herokuapp.com/api/notes';
 
 export const getNotes = async() => {
   

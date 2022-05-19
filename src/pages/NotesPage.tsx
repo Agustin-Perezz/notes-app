@@ -23,7 +23,6 @@ export const NotesPage = () => {
           <NoteForm { ...showModal } setShowModal={ setShowModal } />
         </div>
       }
-      {/* <footer> develop by banana agustin </footer> */}
     </div>
   )
 }

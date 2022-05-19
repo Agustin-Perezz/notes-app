@@ -20,7 +20,7 @@ export const useMutateNote = ( id?: string ) => {
   if ( !id ) {
     return useMutation( addNote , {
       onSuccess: () => {
-        toast.success('Successfully created!', { style: { border: '0.5px solid #5AB75B', marginTop: '5rem'}})
+        toast.success('Successfully created!', { style: { border: '0.5px solid #5AB75B', marginTop: '1rem'}})
         queryClient.invalidateQueries( [KEY] )
       },
       onMutate: ( newNote ) => {
@@ -30,7 +30,7 @@ export const useMutateNote = ( id?: string ) => {
   } else {
     return useMutation( updateNote , {
       onSuccess: () => {
-        toast.success('Successfully updated!', { style: { border: '0.5px solid #4067DB', marginTop: '5rem'}})
+        toast.success('Successfully updated!', { style: { border: '0.5px solid #4067DB', marginTop: '1rem'}})
         queryClient.invalidateQueries( [KEY] )
       },
       onMutate: ( newNote ) => {
@@ -50,7 +50,7 @@ export const useDeleteNote = () => {
   const queryClient = useQueryClient();
   return useMutation( deleteNote , {
     onSuccess: () => {
-      toast.success('Successfully eliminated!', { style: { border: '0.5px solid #F37A7A', marginTop: '5rem'}});
+      toast.success('Successfully eliminated!', { style: { border: '0.5px solid #F37A7A', marginTop: '1rem'}});
       queryClient.invalidateQueries( [KEY ])
     },
     onMutate: ( noteId ) => {
