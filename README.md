@@ -10,6 +10,6 @@ Construccion: React, TS, SASS, React-Query: (global-state). Se utilizó Firebase
 Gracias por leer.
 ## Feedback
 
-Si tienen alguna duda con respecto al proyecto, contactame aqui: fake@fake.com
+Si tienen alguna duda con respecto al proyecto, contactame aqui: [Agustin-Perez](https://www.linkedin.com/in/agustinperez-front-end-developer/)
 
 
