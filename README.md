@@ -20,7 +20,7 @@ Link Deploy: https://agustin-perezz.github.io/notes-app/
 - `VITE_PROJECT_ID=<your-project-id>`
 - `VITE_MESSAGING_SENDER_ID=<your-messaging-sender-id>`
 - `VITE_APP_ID=<your-api-id>`
-4. Clonar, instalar e inicializar al [API](https://github.com/Agustin-Perezz/meli-clone-back-end).
+4. Clonar, instalar e inicializar al [API](https://github.com/Agustin-Perezz/crud-todo-firebase-back-end).
 5. Ejecutar el comando `npm run dev` y listo.
 
 ## Construido con
