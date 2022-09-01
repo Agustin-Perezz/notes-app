@@ -3,5 +3,5 @@ import react from '@vitejs/plugin-react'
 
 export default defineConfig({
   base: '/notes-app/',
-  plugins: [react()]
+  plugins: [react()],
 })
